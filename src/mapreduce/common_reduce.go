@@ -11,6 +11,8 @@ import (
 	"strings"
 )
 
+//======================================================================
+//added by shawnshanks
 type By func(a, b *KeyValue) bool
 
 func (by By) Sort(key_values []KeyValue) {
@@ -38,7 +40,7 @@ func (s *KeyValue_sort) Swap(i, j int) {
 func(s *KeyValue_sort) Less(i, j int) bool {
 	return s.by(&s.key_values[i], &s.key_values[j]) 
 }
-
+//======================================================================
 
 func doReduce(
 	jobName string, // the name of the whole MapReduce job
@@ -86,7 +88,7 @@ func doReduce(
 
 	//***written by Shawnshanks starting in 20180813.pm
 	// finishing in 20180815.pm 	
-	//==================================================================
+	//=====================================================================
 
 	var key_value_sum []KeyValue
 
@@ -174,7 +176,8 @@ func doReduce(
 	if err != nil {fmt.Println("error", err)}
 	
 
-//========
+	//====================================================
+	//encoded into file in the form of json 
 	var key_prev string 
 	var value_kvs_tmp []string
 
@@ -204,8 +207,8 @@ func doReduce(
 		}
 	}
 	enc.Encode(&(KeyValue{key_prev, reduceF(key_prev, value_kvs_tmp)}))
-//========
+	//======================================================
 
 	f_output.Close()
-	//
+	//=========================================================================
 }

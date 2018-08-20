@@ -23,7 +23,7 @@ func mapF(filename string, contents string) []mapreduce.KeyValue {
 	allStrings := strings.Fields(contents)
 
 	var res []mapreduce.KeyValue
-/*	
+	/*	
 	for _, oneString := range allStrings {
 		var IsL int = 1
 		for _, letter := range oneString {
@@ -36,13 +36,12 @@ func mapF(filename string, contents string) []mapreduce.KeyValue {
 			res = append(res, kv)
 		}
 	}
-*/
-
+	*/
 	for _, oneString := range allStrings {
 
 		var subword []byte
 		var cnt int = 0
-//		var AlreadyAppend int = 0
+	//	var AlreadyAppend int = 0
 		//**part one***
 		for i, letter := range oneString {
 			if 0 == cnt {
@@ -61,7 +60,7 @@ func mapF(filename string, contents string) []mapreduce.KeyValue {
 					res = append(res, kv)
 
 					subword = []byte{}
-//					AlreadyAppend = 1
+	//				AlreadyAppend = 1
 				}				
 			}
 		}//for
@@ -76,7 +75,6 @@ func mapF(filename string, contents string) []mapreduce.KeyValue {
 			}//if
 		}//else
 	}//for
-
 
 	return res
 }
